@@ -5,6 +5,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+//route
+const postRoutes = require('./routes/post');
 // app
 const app = express();
 
@@ -21,6 +23,7 @@ mongoose
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
+app.use('/api', postRoutes);
 
 // route
 app.get("*", (req, res) => {
