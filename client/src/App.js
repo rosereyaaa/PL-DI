@@ -3,6 +3,7 @@ import Create from "./Create";
 const App = () => (
   <div>
     <h1>MERN CRUDS</h1>
+    <Create />
   </div>
 );
 
