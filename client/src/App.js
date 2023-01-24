@@ -1,8 +1,8 @@
 import React from "react";
-
+import Create from "./Create";
 const App = () => (
   <div>
-    <h1>MERN CRUD</h1>
+    <h1>MERN CRUDS</h1>
   </div>
 );
 
