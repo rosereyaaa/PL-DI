@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Nav from './Nav';
 const Create = () => {
-    //state
+    // state
+
     const [state, setState] = useState({
         title: '',
         content: '',
@@ -10,12 +11,18 @@ const Create = () => {
 
     // destructure values from state
     const { title, content, user } = state;
-    // onchange event handler
 
+    // onchange event handler
     const handleChange = name => event => {
-        console.log('name', name, 'event', event.target.value);
+        // console.log('name', name, 'event', event.target.value);
         setState({ ...state, [name]: event.target.value });
     };
+
+    // function handleChange(name) {
+    //     return function(event) {
+    //         setState({ ...state, [name]: event.target.value });
+    //     };
+    // }
 
     return (
         <div className="container p-5">
@@ -35,6 +42,7 @@ const Create = () => {
                         required
                     />
                 </div>
+
                 <div className="form-group">
                     <label className="text-muted">Content</label>
                     <textarea
@@ -46,6 +54,7 @@ const Create = () => {
                         required
                     />
                 </div>
+
                 <div className="form-group">
                     <label className="text-muted">User</label>
                     <input
@@ -57,11 +66,13 @@ const Create = () => {
                         required
                     />
                 </div>
+
                 <div>
                     <button className="btn btn-primary">Create</button>
                 </div>
             </form>
-        </div>
+        </div >
     );
 };
+
 export default Create;
