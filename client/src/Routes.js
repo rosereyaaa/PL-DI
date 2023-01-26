@@ -7,7 +7,7 @@ const RoutedApp = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" exact="true" element={<App />} />
+                <Route path="/" exact="true" element={<App />} /> 
                 <Route path="/create" exact="true" element={<Create />} />
             </Routes>
         </Router>

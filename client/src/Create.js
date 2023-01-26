@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Nav from './Nav';
 const Create = () => {
     //state
     const [state, setState] = useState({
@@ -19,6 +19,7 @@ const Create = () => {
 
     return (
         <div className="container p-5">
+            <Nav />
             <h1>CREATE POST</h1>
             <br />
             {JSON.stringify(state)}
