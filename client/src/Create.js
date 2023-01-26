@@ -14,8 +14,9 @@ const Create = () => {
 
     // onchange event handler
     const handleChange = name => event => {
-        // console.log('name', name, 'event', event.target.value);
+        console.log('name', name, 'event', event.target.value);
         setState({ ...state, [name]: event.target.value });
+        console.log(state);
     };
 
     // function handleChange(name) {
