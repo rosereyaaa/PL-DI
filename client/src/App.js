@@ -7,5 +7,4 @@ const App = () => (
     <h1>MERN CRUDS</h1>
   </div>
 );
-
 export default App;
