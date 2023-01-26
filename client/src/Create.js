@@ -51,8 +51,8 @@ const Create = () => {
             <h1>CREATE POST</h1>
             <br />
             {JSON.stringify(state)}
-            <form onSubmit={handleSubmit}></form>
-            <form>
+            <form onSubmit={handleSubmit}>
+                {/* <form> */}
                 <div className="form-group">
                     <label className="text-muted">Title</label>
                     <input
