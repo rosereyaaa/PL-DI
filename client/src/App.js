@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Create from "./Create";
+import { Link } from 'react-router-dom';
 import Nav from './Nav';
 import Tool from './Tool';
 import axios from 'axios';
@@ -33,7 +34,10 @@ const App = () => {
       {posts.map((post, i) => (
         <div className="row" key={post._id} style={{ borderBottom: '1px solid silver' }}>
           <div className="col pt-3 pb-2">
-            <h2>{post.title}</h2>
+            {/* <h2>{post.title}</h2> */}
+            <Link to={`/post/${post.slug}`}>
+              <h2>{post.title}</h2>
+            </Link>
             <p className="lead">{post.content.substring(0, 100)}</p>
             <p>
               Author <span className="badge">{post.user}</span> Published on{' '}
