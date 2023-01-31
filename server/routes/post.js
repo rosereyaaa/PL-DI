@@ -13,4 +13,5 @@ router.get('/posts', list);
 router.get('/post/:slug', read);
 router.put('/post/:slug', update);
 router.delete('/post/:slug', remove);
+
 module.exports = router;
