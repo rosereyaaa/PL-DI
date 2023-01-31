@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getUser, logout } from './helpers';
 const Nav = () => (
     <nav>
         <ul className="nav nav-tabs">
@@ -9,6 +10,20 @@ const Nav = () => (
             <li className="nav-item pr-3 pt-3 pb-3">
                 <Link to="/create">Create</Link>
             </li>
+            {!getUser() && (
+                <li className="nav-item ml-auto pr-3 pt-3 pb-3">
+                    <Link to="/login">Login</Link>
+                </li>
+            )}
+
+            {getUser() && (
+                <li
+                    onClick={() => logout(() => navigate('/'))}
+                    className="nav-item ml-auto pr-3 pt-3 pb-3"
+                    style={{ cursor: 'pointer' }}>
+                    Logout
+                </li>
+            )}
         </ul>
     </nav>
 );
