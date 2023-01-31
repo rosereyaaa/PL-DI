@@ -40,13 +40,13 @@ exports.list = (req, res) => {
             if (err) console.log(err);
             res.json(posts);
         });
+};
 
-    exports.read = (req, res) => {
-        // console.log(req.pramas.slug)
-        const { slug } = req.params;
-        Post.findOne({ slug }).exec((err, post) => {
-            if (err) console.log(err);
-            res.json(post);
-        });
-    };
+exports.read = (req, res) => {
+    // console.log(req.pramas.slug)
+    const { slug } = req.params;
+    Post.findOne({ slug }).exec((err, post) => {
+        if (err) console.log(err);
+        res.json(post);
+    });
 };
