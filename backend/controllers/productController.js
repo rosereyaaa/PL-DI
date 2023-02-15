@@ -85,10 +85,18 @@ exports.getProducts = async (req, res, next) => {
     apiFeatures.pagination(resPerPage);
     const products = await apiFeatures.query;
     // console.log(products)
-    res.status(200).json({
-        success: true,
-        count: products.length,
-        productsCount,
-        products
-    })
+    // res.status(200).json({
+    //     success: true,
+    //     count: products.length,
+    //     productsCount,
+    //     products
+    // })
+    setTimeout(() => {
+        res.status(200).json({
+            success: true,
+            // count: products.length,
+            productsCount,
+            products
+        })
+    }, 2000);
 }
