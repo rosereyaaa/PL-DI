@@ -4,7 +4,7 @@ import { loadUser } from "./actions/userActions";
 import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import "./App.css";
+import "./App.css";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";

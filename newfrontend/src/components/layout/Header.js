@@ -4,7 +4,7 @@ import { Route, Link, Routes } from "react-router-dom";
 import Search from "./Search";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/userActions";
-// import "../../App.css";
+import "../../App.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
