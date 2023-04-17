@@ -4,7 +4,6 @@ import { loadUser } from "./actions/userActions";
 import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -19,13 +18,23 @@ import ProtectedRoute from "./components/route/ProtectedRoute";
 import UpdatePassword from "./components/user/UpdatePassword";
 import ForgotPassword from "./components/user/ForgotPassword";
 import NewPassword from "./components/user/NewPassword";
-import Cart from './components/cart/cart'
-import Shipping from './components/cart/Shipping'
-import ConfirmOrder from './components/cart/ConfirmOrder'
-import Payment from './components/cart/Payment'
-import OrderSuccess from './components/cart/OrderSuccess'
-import ListOrders from './components/order/ListOrders'
-import OrderDetails from './components/order/OrderDetails'
+import Cart from "./components/cart/cart";
+import Shipping from "./components/cart/Shipping";
+import ConfirmOrder from "./components/cart/ConfirmOrder";
+import Payment from "./components/cart/Payment";
+import OrderSuccess from "./components/cart/OrderSuccess";
+import ListOrders from "./components/order/ListOrders";
+import OrderDetails from "./components/order/OrderDetails";
+
+import Dashboard from "./components/admin/Dashboard";
+import ProductsList from "./components/admin/ProductsList";
+import NewProduct from "./components/admin/NewProduct";
+import UpdateProduct from "./components/admin/UpdateProduct";
+import OrdersList from "./components/admin/OrdersList";
+import ProcessOrder from "./components/admin/ProcessOrder";
+import UsersList from "./components/admin/UsersList";
+import UpdateUser from "./components/admin/UpdateUser";
+import ProductReviews from "./components/admin/ProductReviews";
 
 function App() {
   useEffect(() => {
@@ -80,38 +89,129 @@ function App() {
           exact="true"
         />
         <Route path="/cart" element={<Cart />} exact="true" />
-        <Route path="/shipping"
+        <Route
+          path="/shipping"
           element={
-            <ProtectedRoute >
+            <ProtectedRoute>
               <Shipping />
-            </ProtectedRoute>}
-          exact="true" />
-        <Route path="/confirm"
+            </ProtectedRoute>
+          }
+          exact="true"
+        />
+        <Route
+          path="/confirm"
           element={
-            <ProtectedRoute >
+            <ProtectedRoute>
               <ConfirmOrder />
-            </ProtectedRoute>} />
-        <Route path="/payment"
-          element={
-            <ProtectedRoute >
-              <Payment />
-            </ProtectedRoute>} />
-        <Route path="/success"
-          element={
-            <ProtectedRoute >
-              <OrderSuccess />
-            </ProtectedRoute>} />
-        <Route path="/orders/me"
-          element={
-            <ProtectedRoute >
-              <ListOrders />
-            </ProtectedRoute>} />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/order/:id"
+        <Route
+          path="/payment"
           element={
-            <ProtectedRoute >
+            <ProtectedRoute>
+              <Payment />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/success"
+          element={
+            <ProtectedRoute>
+              <OrderSuccess />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/orders/me"
+          element={
+            <ProtectedRoute>
+              <ListOrders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order/:id"
+          element={
+            <ProtectedRoute>
               <OrderDetails />
-            </ProtectedRoute>} />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/products"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <ProductsList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/product"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <NewProduct />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/product/:id"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <UpdateProduct />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/orders"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <OrdersList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/order/:id"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <ProcessOrder />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <UsersList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/user/:id"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <UpdateUser />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/reviews"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <ProductReviews />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <ToastContainer />
       {!loading && (!isAuthenticated || user.role !== "admin") && <Footer />}

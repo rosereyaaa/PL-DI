@@ -1,100 +1,104 @@
-import React, { Fragment, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { MDBDataTable } from 'mdbreact'
-import MetaData from '../layout/MetaData'
-import Loader from '../layout/Loader'
-import { useDispatch, useSelector } from 'react-redux'
-import { myOrders, clearErrors } from '../../actions/orderActions'
+import React, { Fragment, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { MDBDataTable } from "mdbreact";
+import MetaData from "../layout/MetaData";
+import Loader from "../layout/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { myOrders, clearErrors } from "../../actions/orderActions";
 
 const ListOrders = () => {
-
     const dispatch = useDispatch();
-    const { loading, error, orders } = useSelector(state => state.myOrders);
+
+    const { loading, error, orders } = useSelector((state) => state.myOrders);
 
     useEffect(() => {
         dispatch(myOrders());
 
         if (error) {
-            dispatch(clearErrors())
+            dispatch(clearErrors());
         }
-    }, [dispatch, error])
-
+    }, [dispatch, error]);
 
     const setOrders = () => {
-
         const data = {
-
             columns: [
-
                 {
-                    label: 'Order ID',
-                    field: 'id',
-                    sort: 'asc'
+                    label: "Order ID",
+                    field: "id",
+                    sort: "asc",
+                },
+                {
+                    label: "Item Name",
+                    field: "name",
+                    sort: "asc",
                 },
 
                 {
-                    label: 'Num of Items',
-                    field: 'numOfItems',
-                    sort: 'asc'
+                    label: "Num of Items",
+                    field: "numOfItems",
+                    sort: "asc",
                 },
 
                 {
-                    label: 'Amount',
-                    field: 'amount',
-                    sort: 'asc'
+                    label: "Amount",
+                    field: "amount",
+                    sort: "asc",
                 },
 
                 {
-                    label: 'Status',
-                    field: 'status',
-                    sort: 'asc'
+                    label: "Status",
+                    field: "status",
+                    sort: "asc",
                 },
 
                 {
-                    label: 'Actions',
-                    field: 'actions',
-                    sort: 'asc'
+                    label: "Actions",
+                    field: "actions",
+                    sort: "asc",
                 },
-
             ],
 
-            rows: []
+            rows: [],
+        };
 
-        }
-
-        orders.forEach(order => {
-
+        orders.forEach((order) => {
             data.rows.push({
-
                 id: order._id,
+
+                name: order.orderItems[0].name,
+
                 numOfItems: order.orderItems.length,
+
                 amount: `$${order.totalPrice}`,
 
-                status: order.orderStatus && String(order.orderStatus).includes('Delivered')
-                    ? <p style={{ color: 'green' }}>{order.orderStatus}</p>
-                    : <p style={{ color: 'red' }}>{order.orderStatus}</p>,
+                status:
+                    order.orderStatus &&
+                        String(order.orderStatus).includes("Delivered") ? (
+                        <p style={{ color: "green" }}>{order.orderStatus}</p>
+                    ) : (
+                        <p style={{ color: "red" }}>{order.orderStatus}</p>
+                    ),
 
-                actions:
+                actions: (
                     <Link to={`/order/${order._id}`} className="btn btn-primary">
                         <i className="fa fa-eye"></i>
                     </Link>
-            })
-        })
+                ),
+            });
+        });
 
         return data;
-
-    }
+    };
 
     return (
-
         <Fragment>
-
-            <MetaData title={'My Orders'} />
+            <MetaData title={"My Orders"} />
 
             <h1 className="my-5">My Orders</h1>
 
-            {loading ? <Loader /> : (
-
+            {loading ? (
+                <Loader />
+            ) : (
                 <MDBDataTable
                     data={setOrders()}
                     className="px-3"
@@ -103,11 +107,8 @@ const ListOrders = () => {
                     hover
                 />
             )}
-
         </Fragment>
+    );
+};
 
-    )
-
-}
-
-export default ListOrders
+export default ListOrders;

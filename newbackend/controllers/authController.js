@@ -6,19 +6,19 @@ const cloudinary = require("cloudinary");
 const crypto = require("crypto");
 
 exports.registerUser = async (req, res, next) => {
-    const result = await cloudinary.v2.uploader.upload(
-        req.body.avatar,
-        {
-            folder: "avatars",
+    // const result = await cloudinary.v2.uploader.upload(
+    //     req.body.avatar,
+    //     {
+    //         folder: "avatars",
 
-            width: 150,
+    //         width: 150,
 
-            crop: "scale",
-        },
-        (err, res) => {
-            console.log(err, res);
-        }
-    );
+    //         crop: "scale",
+    //     },
+    //     (err, res) => {
+    //         console.log(err, res);
+    //     }
+    // );
 
     // return console.log(result)
 
@@ -38,10 +38,14 @@ exports.registerUser = async (req, res, next) => {
         password,
 
         avatar: {
-            public_id: result.public_id,
+            public_id: 'users/employee-girl_nbxczc',
+            url: 'https://res.cloudinary.com/ddqud3zsp/image/upload/v1680883827/users/employee-girl_nbxczc.png'
+        }
+        // avatar: {
+        //     public_id: result.public_id,
 
-            url: result.secure_url,
-        },
+        //     url: result.secure_url,
+        // },
     });
 
     sendToken(user, 200, res);

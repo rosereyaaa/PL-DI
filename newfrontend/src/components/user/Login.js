@@ -37,6 +37,7 @@ const Login = () => {
             theme: "dark",
         });
 
+
     useEffect(() => {
         if (isAuthenticated && redirect === "shipping") {
             // navigate(redirect.get('redirect'), {replace: true})

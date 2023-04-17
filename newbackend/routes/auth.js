@@ -25,8 +25,11 @@ const {
 
 router
     .route("/admin/user/:id")
+
     .get(isAuthenticatedUser, authorizeRoles("admin"), getUserDetails)
+
     .put(isAuthenticatedUser, authorizeRoles("admin"), updateUser)
+
     .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUser);
 
 router
@@ -39,6 +42,15 @@ router.put(
     upload.single("avatar"),
     updateProfile
 );
+
+router
+    .route("/admin/user/:id")
+
+    .get(isAuthenticatedUser, authorizeRoles("admin"), getUserDetails)
+
+    .put(isAuthenticatedUser, authorizeRoles("admin"), updateUser)
+
+    .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUser);
 
 router.put("/password/update", isAuthenticatedUser, updatePassword);
 router.get("/me", isAuthenticatedUser, getUserProfile);

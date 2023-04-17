@@ -1,8 +1,10 @@
 const multer = require("multer");
+
 const path = require("path");
 
 module.exports = multer({
-    limits: { fieldSize: 25 * 1024 * 1024 },
+    limits: { fieldSize: 50 * 1024 * 1024 },
+
     storage: multer.diskStorage({}),
 
     fileFilter: (req, file, cb) => {
@@ -13,6 +15,7 @@ module.exports = multer({
 
             return;
         }
+
         cb(null, true);
     },
 });
